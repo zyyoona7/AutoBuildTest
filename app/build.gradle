@@ -66,6 +66,9 @@ android {
         zhushou91 {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zhushou91"]
         }
+        xiaomi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
+        }
     }
     allprojects {
         repositories {
