@@ -85,10 +85,10 @@ android {
             def outDirectory = oldFile.parent
 
             if ("true".equals(IS_JENKINS)) {
-                timeNow = getDate()
+                timeNow =JENKINS_TIME
                 outDirectory = 'D:/AndroidIDE/testApk'
                 newName = 'AutoBuildTest-android-v' +
-                        APP_VERSION + '-' + variant.productFlavors[0].name  + '-' + variant.buildType.name + '.apk'
+                        APP_VERSION + '-' + variant.productFlavors[0].name +"-"+timeNow + '-' + variant.buildType.name + '.apk'
             } else {
                 timeNow = getDate()
                 if (variant.buildType.name.equals('debug')) {
