@@ -12,10 +12,10 @@ android {
     buildToolsVersion "25.0.0"
     signingConfigs {
         signingConfig {
-            keyAlias '1'
-            keyPassword '123456'
-            storeFile file('C:/Users/User/Desktop/rocooSample.jks')
-            storePassword '123456'
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+            storeFile file(STORE_FILE_PATH)
+            storePassword STORE_FILE_PASSWORD
         }
     }
     defaultConfig {
