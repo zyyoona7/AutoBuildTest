@@ -12,6 +12,7 @@ android {
     buildToolsVersion "25.0.0"
     aaptOptions{
         useNewCruncher false
+        cruncherEnabled false
     }
     signingConfigs {
         signingConfig {
@@ -24,7 +25,7 @@ android {
     defaultConfig {
         applicationId "com.zyyoona7.autobuildtest"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 23
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         versionCode verCode
