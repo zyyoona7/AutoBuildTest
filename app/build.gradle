@@ -10,8 +10,9 @@ def verCode = 14
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
-    aaptOptions.cruncherEnabled = false
-    aaptOptions.useNewCruncher = false
+    aaptOptions{
+        useNewCruncher false
+    }
     signingConfigs {
         signingConfig {
             keyAlias KEY_ALIAS
