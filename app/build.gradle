@@ -31,6 +31,8 @@ android {
         buildConfigField 'String', 'API_SERVER_URL', RELEASE_API_SERVER_URL
         buildConfigField 'String', 'API_SERVER_URL_MALL', RELEASE_API_SERVER_URL_MALL
         signingConfig signingConfigs.signingConfig
+        aaptOptions.cruncherEnabled = false
+        aaptOptions.useNewCruncher = false
     }
 
 
