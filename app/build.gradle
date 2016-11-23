@@ -18,7 +18,11 @@ android {
         signingConfig {
             keyAlias KEY_ALIAS
             keyPassword KEY_PASSWORD
-            storeFile file(STORE_FILE_PATH)
+            if ("true".equals(IS_JENKINS)) {
+                storeFile file(STORE_FILE_PATH)
+            }else {
+                storeFile file("D:\\AndroidIDE\\testApkrocooSample.jks")
+            }
             storePassword STORE_FILE_PASSWORD
         }
     }
