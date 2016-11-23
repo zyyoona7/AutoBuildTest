@@ -21,7 +21,7 @@ android {
             if ("true".equals(IS_JENKINS)) {
                 storeFile file(STORE_FILE_PATH)
             }else {
-                storeFile file("D:\\AndroidIDE\\testApkrocooSample.jks")
+                storeFile file("D:\\AndroidIDE\\testApk\\rocooSample.jks")
             }
             storePassword STORE_FILE_PASSWORD
         }
