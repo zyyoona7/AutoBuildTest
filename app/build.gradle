@@ -10,20 +10,23 @@ def verCode = 14
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
-    aaptOptions{
+    aaptOptions {
         useNewCruncher false
         cruncherEnabled false
     }
     signingConfigs {
         signingConfig {
-            keyAlias KEY_ALIAS
-            keyPassword KEY_PASSWORD
             if ("true".equals(IS_JENKINS)) {
                 storeFile file(STORE_FILE_PATH)
-            }else {
+                keyAlias KEY_ALIAS
+                keyPassword KEY_PASSWORD
+                storePassword STORE_FILE_PASSWORD
+            } else {
                 storeFile file("D:\\AndroidIDE\\testApk\\rocooSample.jks")
+                keyAlias "1"
+                keyPassword "123456"
+                storePassword "123456"
             }
-            storePassword STORE_FILE_PASSWORD
         }
     }
     defaultConfig {
