@@ -102,6 +102,7 @@ android {
                         APP_VERSION + '-' + variant.productFlavors[0].name + "-" + timeNow + '-' + variant.buildType.name + '.apk'
             } else {
                 timeNow = getDate()
+                outDirectory = BUILD_PATH
                 if (variant.buildType.name.equals('debug')) {
                     newName = "AutoBuildTest-android-v${APP_VERSION}-debug.apk"
                 } else {
