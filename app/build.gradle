@@ -23,7 +23,14 @@ android {
 
     signingConfigs {
         signingConfig {
-            storeFile file(STORE_FILE_PATH)
+            //由于本地打包使用的是本机上的KeyStore
+            //而Jenkins打包用的是服务器上的KeyStore
+            //两个路径不一样
+            if("true".equals(IS_JENKINS)){
+                storeFile file("服务器上KeyStore的路径")
+            }else {
+                storeFile file(STORE_FILE_PATH)
+            }
             keyAlias KEY_ALIAS
             keyPassword KEY_PASSWORD
             storePassword STORE_FILE_PASSWORD
@@ -45,13 +52,10 @@ android {
         javaMaxHeapSize "2g"
     }
 
-    //渠道Flavors，我这里写了一些常用的
+    //渠道Flavors
     productFlavors {
         wandoujia {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
-        }
-        zhushou91 {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "zhushou91"]
         }
         xiaomi {
             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "xiaomi"]
@@ -70,18 +74,21 @@ android {
 
             //是否为Jenkins打包，输出路径不同
             if ("true".equals(IS_JENKINS)) {
-                timeNow = JENKINS_TIME
+                //Jenkins打包输出到服务器路径
+                timeNow = BUILD_TIME
+                //BUILD_PATH为服务器输出路径
                 outDirectory = BUILD_PATH
                 //AutoBuildTest-v1.0.1-xiaomi-release.apk
                 newName = 'AutoBuildTest-v' +
                         APP_VERSION + '-' + variant.productFlavors[0].name + '-' + variant.buildType.name + '.apk'
             } else {
+                //本机打包输出在本机路径
                 timeNow = getDate()
                 outDirectory = output.outputFile.getParent()
                 if ('debug'.equals(variant.buildType.name)) {
                     newName = "AutoBuildTest-v${APP_VERSION}-debug.apk"
                 } else {
-                    //AutoBuildTest-v1.0.1-xiaomi-201612201425-release.apk
+                    //AutoBuildTest-v1.0.1-xiaomi-release.apk
                     newName = 'AutoBuildTest-v' +
                             APP_VERSION + '-' + variant.productFlavors[0].name + '-' + variant.buildType.name + '.apk'
                 }
